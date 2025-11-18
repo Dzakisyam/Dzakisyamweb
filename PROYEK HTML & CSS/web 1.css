@@ -1,0 +1,307 @@
+/* ========= GLOBAL ========= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #000;
+  font-family: "Poppins", sans-serif;
+  color: white;
+  overflow-x: hidden;
+}
+
+/* ========= FADE ANIMATION ========= */
+.fade {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeIn 1s ease forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ========= NAVIGATION BAR ========= */
+.top-nav {
+  width: 100%;
+  padding: 20px 60px;
+  position: fixed;
+  top: 0;
+  background: rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(0, 255, 255, 0.15);
+  z-index: 1000;
+}
+
+.top-nav ul {
+  list-style: none;
+  display: flex;
+  gap: 40px;
+  justify-content: flex-end;
+}
+
+.top-nav a {
+  color: white;
+  text-decoration: none;
+  letter-spacing: 1px;
+  font-weight: 600;
+  position: relative;
+}
+
+.top-nav a::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  background: cyan;
+  bottom: -4px;
+  left: 0;
+  transition: .3s;
+}
+
+.top-nav a:hover::after {
+  width: 100%;
+}
+
+/* ========= HERO HOME ========= */
+.hero-home {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* ==== Moving Text Layers ==== */
+.moving-text {
+  position: absolute;
+  width: 250%;
+  display: flex;
+  gap: 80px;
+  opacity: 0.55;
+  filter: drop-shadow(0 0 40px cyan);
+  animation: moveTxt 18s linear infinite;
+}
+
+.moving-text h1 {
+  font-size: 10rem;
+  font-weight: 900;
+  white-space: nowrap;
+  color: white;
+}
+
+.layer1 { top: 15%; }
+.layer2 { top: 35%; opacity: 0.5; }
+.layer3 { top: 55%; opacity: 0.45; }
+
+@keyframes moveTxt {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* ========= HERO IMAGE ========= */
+.hero-center img {
+  width: 650px;
+  border-radius: 40px;
+  filter: drop-shadow(0 0 25px cyan);
+  transition: .3s;
+}
+
+.hero-center img:hover {
+  filter: drop-shadow(0 0 40px cyan);
+  transform: scale(1.03);
+}
+
+/* ========= RIGHT SIDE TEXT ========= */
+.side-text {
+  position: absolute;
+  right: 60px;
+  top: 40%;
+  text-align: right;
+  line-height: 32px;
+}
+
+.side-text p {
+  font-size: 1.1rem;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+/* ========= CONTENT PAGES ========= */
+.page-container {
+  padding-top: 150px;
+  width: 80%;
+  margin: auto;
+}
+
+.page-container h1 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+  color: cyan;
+  text-align: center;
+}
+
+.page-box {
+  background: rgba(0, 0, 0, 0.5);
+  border: 1px solid cyan;
+  padding: 30px;
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+/* ========= GALLERY GRID ========= */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.gallery-grid img {
+  width: 100%;
+  border-radius: 12px;
+  transition: .3s;
+  filter: drop-shadow(0 0 10px cyan);
+}
+
+.gallery-grid img:hover {
+  transform: scale(1.05);
+  filter: drop-shadow(0 0 20px cyan);
+}
+
+/* ========= BACKGROUND ORNAMENTS ========= */
+
+.bg-ornament {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;  
+  overflow: hidden;
+  pointer-events: none;
+}
+
+/* Orb — bola neon besar */
+.bg-ornament::before {
+  content: "";
+  position: absolute;
+  top: -100px;
+  left: -100px;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(0,255,255,0.3), transparent 70%);
+  filter: blur(90px);
+  animation: floatOrb 10s infinite alternate ease-in-out;
+}
+
+/* Orb kedua */
+.bg-ornament::after {
+  content: "";
+  position: absolute;
+  bottom: -120px;
+  right: -120px;
+  width: 450px;
+  height: 450px;
+  background: radial-gradient(circle, rgba(0,170,255,0.35), transparent 70%);
+  filter: blur(85px);
+  animation: floatOrb2 12s infinite alternate ease-in-out;
+}
+
+/* Animasi orb */
+@keyframes floatOrb {
+  0% { transform: translate(0,0); }
+  100% { transform: translate(80px,60px); }
+}
+
+@keyframes floatOrb2 {
+  0% { transform: translate(0,0); }
+  100% { transform: translate(-70px,-50px); }
+}
+
+
+/* ===== GRID CYBERPUNK ===== */
+.bg-ornament .grid {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(rgba(0,255,255,0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,255,255,0.06) 1px, transparent 1px);
+  background-size: 70px 70px;
+  animation: gridMove 15s linear infinite;
+}
+
+@keyframes gridMove {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-70px); }
+}
+
+
+/* ========= SOCIAL LINKS ========= */
+.social-list a {
+  display: block;
+  margin-bottom: 12px;
+  color: cyan;
+  text-decoration: none;
+  font-size: 1.1rem;
+  letter-spacing: 1px;
+}
+
+.social-list a:hover {
+  color: white;
+  text-shadow: 0 0 10px cyan;
+}
+
+/* ========= CV BUTTON ========= */
+.cv-wrapper {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.cv-btn {
+  padding: 14px 36px;
+  font-size: 1.2rem;
+  color: cyan;
+  border: 2px solid cyan;
+  border-radius: 14px;
+  background: transparent;
+  text-decoration: none;
+  font-weight: 600;
+  letter-spacing: 1px;
+  transition: 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+}
+
+.cv-btn:hover {
+  background: cyan;
+  color: black;
+  box-shadow: 0 0 15px cyan, 0 0 40px cyan;
+  transform: scale(1.03);
+}
+
+.cv-btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.2);
+  transition: 0.4s;
+}
+
+.cv-btn:hover::before {
+  left: 100%;
+}
